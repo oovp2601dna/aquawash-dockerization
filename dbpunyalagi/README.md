@@ -58,12 +58,15 @@ docker compose exec db mysql -uroot -plocal_dev_password -e "SHOW TABLES IN laun
 ## Stop the Application
 
 - Stop and remove the application and database containers:
+```bash
 docker compose down
+```
 
 - The named Docker volume mysql_data is retained by default, so database data persists when the containers are stopped and removed normally.
 - To also delete the stored database data, run:
+```bash
 docker compose down -v
-
+```
 Warning: The -v option deletes the Compose-managed database volume and its stored data.
 
 ## Troubleshooting
