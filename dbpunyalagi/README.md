@@ -32,8 +32,8 @@ containerized with Docker to simplify setup and execution.
    http://localhost:8080
 
 ## Services
-- App: PHP and Apache, accessible on port 8080.
-- Database: MySQL 8.0, accessible internally to the app.
+- App: PHP 8.2 and Apache, accessible at host port 8080, mapped to container port 80.
+- Database: MySQL 8.0, accessible internally through the Docker Compose service name db on port 3306.
 
 ## Verification
 
@@ -57,12 +57,14 @@ docker compose exec db mysql -uroot -plocal_dev_password -e "SHOW TABLES IN laun
 
 ## Stop the Application
 
-```bash
+- Stop and remove the application and database containers:
 docker compose down
-```
 
-The MySQL data is stored in a Docker named volume
-to persist across normal container restarts.
+- The named Docker volume mysql_data is retained by default, so database data persists when the containers are stopped and removed normally.
+- To also delete the stored database data, run:
+docker compose down -v
+
+Warning: The -v option deletes the Compose-managed database volume and its stored data.
 
 ## Troubleshooting
 
