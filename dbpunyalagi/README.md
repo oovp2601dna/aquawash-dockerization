@@ -46,7 +46,7 @@ docker compose ps
 Check application and database logs:
 
 ```bash
-docker compose logs --tail=50
+docker compose logs --tail=20
 ```
 
 Check database tables:
